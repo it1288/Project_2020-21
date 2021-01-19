@@ -1,8 +1,10 @@
 package com.example.myfirstapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,12 +17,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Array;
 import java.net.URLDecoder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 
@@ -30,11 +32,10 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class ViewTrends extends AppCompatActivity {
 
-    public static final String twitterBearerToken = "AAAAAAAAAAAAAAAAAAAAAEJ%2BLAEAAAAASl%2BZymBgDuRWDVjKU5ucFAbcflY%3Djjkv8RCzVGl2Iz4tZahIbgKreSyLWKCZYRYA4amQ8jFDhmcRZB";
-    public static final String twitterUserId = "1343655836355342341";
-    public static final String urlEndpoint = "https://api.twitter.com/2/";
+    public static final String twitterBearerToken = new String(Base64.getDecoder().decode("QUFBQUFBQUFBQUFBQUFBQUFBQUFBRUolMkJMQUVBQUFBQVNsJTJCWnltQmdEdVJXRFZqS1U1dWNGQWJjZmxZJTNEamprdjhSQ3pWR2wySXo0dFphaEliZ0tyZVN5TFdLQ1pZUllBNGFtUThqRkRobWNSWkI="));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +51,10 @@ public class ViewTrends extends AppCompatActivity {
 
     public void getTrends() throws InterruptedException, UnsupportedEncodingException {
         OkHttpClient client = new OkHttpClient();
-        JSONArray responseArray = new JSONArray();
         LinearLayout trendsLinearLayout = (LinearLayout) this.findViewById(R.id.trendsLinearLayout);
         ArrayList<String> trendsList = new ArrayList<String>();
 
-        String url = "https://api.twitter.com/1.1/trends/place.json?id=963291";
+        String url = "https://api.twitter.com/1.1/trends/place.json?id=963291";     // 963291 stands for Yahoo's WOEID for Thessaloniki
 
         Request request = new Request.Builder()
                 .addHeader("Authorization", "Bearer " + twitterBearerToken)

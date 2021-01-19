@@ -1,15 +1,15 @@
 package com.example.myfirstapp;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -21,7 +21,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -35,21 +35,17 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class MainActivity extends AppCompatActivity {
 
-    public static final String twitterKey = "WA54heQh2n24eY8Yq5SSO7XRy";
-    public static final String twitterApiSecretKey="WhJQGT6Q2pQHpqiNaeLU0ad2Mvr9cKRTBLrEyuFWhIuVYAoOAy";
-    public static final String twitterBearerToken = "AAAAAAAAAAAAAAAAAAAAAEJ%2BLAEAAAAASl%2BZymBgDuRWDVjKU5ucFAbcflY%3Djjkv8RCzVGl2Iz4tZahIbgKreSyLWKCZYRYA4amQ8jFDhmcRZB";
-    public static final String twitterUserId = "1343655836355342341";
+    public static final String twitterBearerToken = new String(Base64.getDecoder().decode("QUFBQUFBQUFBQUFBQUFBQUFBQUFBRUolMkJMQUVBQUFBQVNsJTJCWnltQmdEdVJXRFZqS1U1dWNGQWJjZmxZJTNEamprdjhSQ3pWR2wySXo0dFphaEliZ0tyZVN5TFdLQ1pZUllBNGFtUThqRkRobWNSWkI="));;
+    public static final String twitterUserId = new String(Base64.getDecoder().decode("MTM0MzY1NTgzNjM1NTM0MjM0MQ=="));
     public static final String twitterUrlEndpoint = "https://api.twitter.com/2/";
-    public static final String fbAccessToken = "EAAGOZAwpqPIgBAEblcxZB9kvJLAzbyDCKTUNdmDX77gxoFEGSvSEtGSEI5BzZCjswPLxClKdMnbTBJSW0lgUPE6P4RxynFRxyOKos3znZB9ZAlLt46Qc5S9spdJYgF9Csbx6RUXmPXX490OU6dbqSO3Qlja0KCz3sfFmCfnM2sgZDZD";
-    public static final String fbUserId = "109223564457074";
+    public static final String fbAccessToken = new String(Base64.getDecoder().decode("RUFBR09aQXdwcVBJZ0JBRWJsY3haQjlrdkpMQXpieURDS1RVTmRtRFg3N2d4b0ZFR1N2U0V0R1NFSTVCelpDanN3UEx4Q2xLZE1uYlRCSlNXMGxnVVBFNlA0Unh5bkZSeHlPS29zM3puWkI5WkFsTHQ0NlFjNVM5c3BkSllnRjlDc2J4NlJVWG1QWFg0OTBPVTZkYnFTTzNRbGphMEtDejNzZkZtQ2ZuTTJzZ1pEWkQ="));
+    public static final String fbUserId = new String(Base64.getDecoder().decode("MTA5MjIzNTY0NDU3MDc0"));
     public static final String fbUrl = "https://graph.facebook.com/";
-    public static final String fbAppId = "438048184220808";
-    public static final String fbAppSecret = "fdb990d6f4d986e8c6d0818014781def";
 
-    private TextView resultsTextView;
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public JSONArray getTweets(String searchTerm) throws InterruptedException {
         OkHttpClient client = new OkHttpClient();
         JSONArray responseArray = new JSONArray();
@@ -181,7 +178,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void loadPosts(JSONArray posts) throws JSONException {
         setContentView(R.layout.activity_main);
-//        ScrollView postsScrollView = (ScrollView) findViewById(R.id.postsScrollView);
         LinearLayout postsLinearLayout = (LinearLayout) this.findViewById(R.id.postsLinearLayout);
         for (int i = 0; i < posts.length(); i++) {
             JSONObject post = posts.getJSONObject(i);
@@ -241,13 +237,13 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                // Here you could parse string id to integer and then compare.
                 return lid.compareTo(rid);
             }
         });
         return new JSONArray(jsons);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public void onClickButton(View view) throws InterruptedException, JSONException {
         TextView searchTermView = findViewById(R.id.searchTerm);
         String searchTerm = searchTermView.getText().toString().trim();

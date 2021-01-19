@@ -3,47 +3,26 @@ package com.example.myfirstapp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.concurrent.CountDownLatch;
 
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.FormBody;
-import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class CreatePostForm extends AppCompatActivity {
 
@@ -89,7 +68,6 @@ public class CreatePostForm extends AppCompatActivity {
         CheckBox checkBoxTwitter = findViewById(R.id.checkBoxTwitter);
         CheckBox checkBoxFacebook = findViewById(R.id.checkBoxFacebook);
         CheckBox checkBoxInstagram = findViewById(R.id.checkBoxInstagram);
-        String twitterBearerToken = "AAAAAAAAAAAAAAAAAAAAAEJ%2BLAEAAAAASl%2BZymBgDuRWDVjKU5ucFAbcflY%3Djjkv8RCzVGl2Iz4tZahIbgKreSyLWKCZYRYA4amQ8jFDhmcRZB";
 
         if (imageUri != null) {
             // TODO: Unable to implement it
@@ -112,7 +90,7 @@ public class CreatePostForm extends AppCompatActivity {
         String url = "https://api.twitter.com/1.1/statuses/update.json";
 
         RequestBody formBody = new FormBody.Builder()
-                .add("status", message)
+                .add("status", messageUrlEncode)
                 .build();
 
         Request request = new Request.Builder()
