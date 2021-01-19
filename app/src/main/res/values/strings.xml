@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">My First App</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="search_posts">Search Posts</string>
+    <string name="button_send">Send</string>
+    <string name="button_search">Search</string>
+    <string name="new_post">New Post</string>
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">WA54heQh2n24eY8Yq5SSO7XRy</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">WhJQGT6Q2pQHpqiNaeLU0ad2Mvr9cKRTBLrEyuFWhIuVYAoOAy</string>
+</resources>

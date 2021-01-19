@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="loadTrendsView"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="108dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="16dp"
+        android:onClick="onClickButton"
+        android:text="@string/button_search"
+        app:layout_constraintStart_toEndOf="@+id/searchTerm"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/postsScrollView"
+        android:layout_width="384dp"
+        android:layout_height="547dp"
+        android:layout_marginTop="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:layout_editor_absoluteX="10dp">
+
+        <LinearLayout
+            android:id="@+id/postsLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/postView"
+                android:layout_width="match_parent"
+                android:layout_height="152dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <EditText
+        android:id="@+id/searchTerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Search"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="191dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="10dp"
+        android:onClick="loadNewPostView"
+        android:text="@string/new_post"
+        app:layout_constraintTop_toBottomOf="@+id/searchTerm"
+        tools:layout_editor_absoluteX="17dp" />
+
+    <Button
+        android:id="@+id/trendsButton"
+        android:layout_width="165dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:onClick="loadTrendsView"
+        android:text="Trends"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <!--    <ScrollView-->
+    <!--        android:id="@+id/postsScrollView"-->
+    <!--        android:layout_width="388dp"-->
+    <!--        android:layout_height="601dp"-->
+    <!--        tools:layout_editor_absoluteX="12dp"-->
+    <!--        tools:layout_editor_absoluteY="106dp">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/postView"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="112dp"-->
+    <!--                android:text="TextView" />-->
+    <!--        </LinearLayout>-->
+    <!--    </ScrollView>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
